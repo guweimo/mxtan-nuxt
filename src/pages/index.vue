@@ -1,68 +1,97 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        mxtan-nuxt
-      </h1>
-      <h2 class="subtitle">
-        This is a mxtan nuxt
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div class="blog-div">
+    <div class="blog-align">
+      <div class="blog-logo"></div>
+      <h2>谷维陌</h2>
+      <ul class="clearfix blog-ul">
+        <li v-for="item in urlList" :key="item.title">
+          <a :href="item.url" :target="item.target" v-text="item.title"></a>
+          <!-- <router-link :to="item.url" v-text="item.title"></router-link> -->
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
+  name: 'Blog',
+  data() {
+    return {
+      urlList: [
+        {
+          url: 'https://github.com/guweimo',
+          title: 'github',
+          target: '_blank'
+        },
+        {
+          url: 'https://www.jianshu.com/u/bdaa10098256',
+          title: '简书',
+          target: '_blank'
+        },
+        {
+          url: '/home',
+          title: 'home',
+          target: '_self'
+        }
+      ]
+    }
+  },
+  mounted() {
+    const body = document.querySelector('body')
+    body.classList.add('body-no-padding')
+  },
+  destroyed() {
+    const body = document.querySelector('body')
+    body.classList.remove('body-no-padding')
   }
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+<style lang="scss">
+$px-10: 10px;
+$color-default: #52bab3; // #52bab3
+$font-color: #fff; // .blog-div {text-align: center;}
+.blog-div {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  background-color: $color-default;
+  min-height: 100vh;
   align-items: center;
+  justify-content: center;
+}
+.blog-align {
+  h2 {
+    color: $font-color;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+.blog-ul {
   text-align: center;
+  a {
+    text-decoration: none;
+    color: $font-color;
+  }
+  li {
+    display: inline;
+    &:not(:last-of-type) {
+      margin-right: $px-10;
+      &::after {
+        content: '|';
+        padding-left: $px-10;
+        color: $font-color;
+      }
+    }
+  }
 }
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.blog-logo {
+  height: 200px;
+  width: 200px;
+  background-image: url('~@/assets/picture.jpg');
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 4px solid #ccc;
 }
 </style>
