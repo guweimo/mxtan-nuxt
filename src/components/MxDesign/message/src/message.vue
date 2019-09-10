@@ -1,10 +1,10 @@
 <template>
-  <transition name="mei-message-fade" @after-leave="afterLeave">
+  <transition name="mx-message-fade" @after-leave="afterLeave">
     <div
       v-if="show"
-      :class="['mei-message', topClass, type ? `mei-message-${type}` : '']"
+      :class="['mx-message', topClass, type ? `mx-message-${type}` : '']"
     >
-      <span class="mei-message-con">{{ content }}</span>
+      <span class="mx-message-con">{{ content }}</span>
     </div>
   </transition>
 </template>
@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     iconClass() {
-      return this.type ? `mei-message-icon mei-icon-${typeMap[this.type]}` : ''
+      return this.type ? `mx-message-icon mx-icon-${typeMap[this.type]}` : ''
     }
   },
   methods: {
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.mei-message {
+.mx-message {
   position: fixed;
   left: 50%;
   top: 50px;
@@ -53,26 +53,26 @@ export default {
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
-.mei-message-top {
+.mx-message-top {
   top: 5px;
 }
-.mei-message-success {
+.mx-message-success {
   background-color: #83dc73;
   color: #fff;
 }
-.mei-message-error {
+.mx-message-error {
   background-color: #ff5000;
   color: #fff;
 }
-.mei-message-warning {
+.mx-message-warning {
   background-color: #ccc;
 }
-.mei-message-icon {
+.mx-message-icon {
   display: inline-block;
   width: 40px;
   height: 40px;
 }
-.mei-message-con {
+.mx-message-con {
   display: inline-block;
 }
 @keyframes wrapper-gradient {
@@ -83,15 +83,15 @@ export default {
     transform: translateY(0) translateX(-50%);
   }
 }
-.mei-message-fade-enter-active {
+.mx-message-fade-enter-active {
   transition: all 0.3s linear;
   animation: wrapper-gradient 0.5s linear;
 }
-.mei-message-fade-leave-active {
+.mx-message-fade-leave-active {
   transition: all 0.3s linear;
 }
-.mei-message-fade-enter,
-.mei-message-fade-leave-to {
+.mx-message-fade-enter,
+.mx-message-fade-leave-to {
   opacity: 0;
 }
 </style>

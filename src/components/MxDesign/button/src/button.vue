@@ -4,6 +4,17 @@
     :disabled="buttonDisabled || loading"
     :autofocus="autofocus"
     :type="nativeType"
+    :class="[
+      type ? 'mx-button--' + type : '',
+      buttonSize ? 'mx-button--' + buttonSize : '',
+      {
+        'is-disabled': buttonSize,
+        'is-loading': loading,
+        'is-plain': plain,
+        'is-round': round,
+        'is-circle': circle
+      }
+    ]"
     @click="handleClick"
   >
     <i v-if="loading" class="mx-icon-loading"></i>
