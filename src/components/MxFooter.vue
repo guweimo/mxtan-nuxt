@@ -1,5 +1,5 @@
 <template>
-  <div>2019</div>
+  <div></div>
 </template>
 
 <script>
