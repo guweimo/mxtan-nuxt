@@ -64,7 +64,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import picture from '@/assets/picture.jpg'
-// import { removeStore } from '@/utils/unit'
+// import { removeStore } from '@/utils'
 // import mtButton from '@/components/common/mtButton'
 let dropdownEvent = null
 export default {

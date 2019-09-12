@@ -49,7 +49,7 @@ import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import { mapState } from 'vuex'
 import MtButton from '@/components/MtComponent/MtButton'
-import { verifyFormValue } from '@/utils/unit'
+import { verifyFormValue } from '@/utils'
 import { operateArticle } from '@/apis/article'
 
 export default {
@@ -176,7 +176,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .form-content {
   width: 80%;
   margin: 0 auto;

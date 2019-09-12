@@ -87,18 +87,6 @@ export default {
       return Object.keys(validation).every((key) => validation[key])
     }
   },
-  mounted() {
-    const body = document.querySelector('body')
-    body.classList.add('body-no-padding')
-    const app = document.querySelector('#app')
-    app.classList.add('h100p')
-  },
-  destroyed() {
-    const body = document.querySelector('body')
-    body.classList.remove('body-no-padding')
-    const app = document.querySelector('#app')
-    app.classList.remove('h100p')
-  },
   methods: {
     register() {
       if (this.isValid) {
@@ -151,7 +139,7 @@ $color-default: #5c4fb4;
 $color-green: #52bab3;
 
 #sign-up {
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

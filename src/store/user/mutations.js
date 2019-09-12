@@ -1,10 +1,10 @@
 import { USER } from './mutation-types'
-import { getStore, setStore } from '@/utils/unit'
+import { getStore, setStore } from '@/utils'
 import { getMenus } from '@/apis/article'
 
 const navName = 'navlist'
 
-export const mutations = {
+export default {
   [USER.GET_NAV_DATA](state) {
     const navlist = getStore(navName, true)
     if (state.navData.length === 0) {

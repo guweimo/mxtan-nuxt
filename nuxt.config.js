@@ -1,6 +1,10 @@
 export default {
   mode: 'universal',
   srcDir: 'src/',
+  server: {
+    port: 3030,
+    host: '0.0.0.0'
+  },
   /*
    ** Headers of the page
    */

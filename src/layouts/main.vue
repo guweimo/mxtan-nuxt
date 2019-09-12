@@ -1,7 +1,7 @@
 <template>
   <div class="main-page">
     <mx-header :nav-list="navData"></mx-header>
-    <router-view />
+    <nuxt />
     <mx-footer></mx-footer>
   </div>
 </template>

@@ -8,6 +8,7 @@
 import articleList from '@/components/ArticleList'
 
 export default {
+  layout: 'main',
   components: {
     articleList
   }

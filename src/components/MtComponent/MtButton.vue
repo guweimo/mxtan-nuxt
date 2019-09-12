@@ -1,5 +1,5 @@
 <template>
-  <button class="mt-btn" :type="type" @click="handleClick">
+  <button class="mt-btn" :type="type" $click="handleClick">
     <slot />
   </button>
 </template>
@@ -24,10 +24,10 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@default-color: #52bab3;
-@cancel-color: #888;
-@cancel-hover-color: #a6a9ad;
+<style lang="scss" scoped>
+$default-color: #52bab3;
+$cancel-color: #888;
+$cancel-hover-color: #a6a9ad;
 .mt-btn {
   // border: 1px solid transparent;
   border: 0;
@@ -54,16 +54,16 @@ export default {
   }
   &.mt-primary {
     color: #fff;
-    background-color: @default-color;
+    background-color: $default-color;
     &:hover {
       opacity: 0.75;
     }
   }
   &.mt-cancel {
     color: #fff;
-    background-color: @cancel-color;
+    background-color: $cancel-color;
     &:hover {
-      background-color: @cancel-hover-color;
+      background-color: $cancel-hover-color;
     }
   }
   &.mt-gradient {

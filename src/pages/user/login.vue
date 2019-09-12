@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { setStore } from '@/utils/unit'
+import { setStore } from '@/utils'
 import MtButton from '@/components/MtComponent/MtButton'
 import { login } from '@/apis/user'
 
@@ -45,18 +45,6 @@ export default {
         pass: ''
       }
     }
-  },
-  mounted() {
-    const body = document.querySelector('body')
-    body.classList.add('body-no-padding')
-    const app = document.querySelector('#app')
-    app.classList.add('h100p')
-  },
-  destroyed() {
-    const body = document.querySelector('body')
-    body.classList.remove('body-no-padding')
-    const app = document.querySelector('#app')
-    app.classList.remove('h100p')
   },
   methods: {
     loginUser() {
@@ -98,7 +86,7 @@ $color-green: #52bab3;
 
 #sign-in {
   background: $color-green;
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

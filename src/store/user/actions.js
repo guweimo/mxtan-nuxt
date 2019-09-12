@@ -1,8 +1,8 @@
 import { USER } from './mutation-types'
 import { getUser } from '@/apis/user'
-import { getStore } from '@/utils/unit'
+import { getStore } from '@/utils'
 
-export const actions = {
+export default {
   getUserInfo({ commit, state }) {
     const len = Object.keys(state.userInfo)
     if (len.length > 0) {
