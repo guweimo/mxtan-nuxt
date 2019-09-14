@@ -11,6 +11,11 @@ export default {
   layout: 'main',
   components: {
     articleList
+  },
+  data() {
+    return {
+      list: []
+    }
   }
 }
 </script>

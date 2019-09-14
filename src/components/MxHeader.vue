@@ -5,14 +5,14 @@
         <nav>
           <ul class="menu">
             <li id="logo">
-              <router-link to="/home">Mxtan</router-link>
+              <nuxt-link to="/home">Mxtan</nuxt-link>
             </li>
-            <li v-for="item in navList" :key="item.title">
-              <router-link
+            <li v-for="item in menuData" :key="item.title">
+              <nuxt-link
                 :to="item.url"
                 :class="{ select: selectType == item.title.toLowerCase() }"
                 v-text="item.title"
-              ></router-link>
+              ></nuxt-link>
             </li>
             <li class="search">
               <input
@@ -24,18 +24,18 @@
               />
             </li>
             <li>
-              <!-- <mt-button
+              <mt-button
                 v-if="userInfo.name"
                 class="mt-primary"
                 @click="gotoSave"
                 >发布</mt-button
-              > -->
+              >
             </li>
             <li>
-              <!-- <div class="sign" v-if="!userInfo.name">
-                            <router-link to="/login" class="a-inline">登录</router-link>
-                            <router-link to="/register" class="a-inline">注册</router-link>
-            </div>-->
+              <div v-if="!userInfo.name" class="sign">
+                <a href="/user/login" class="a-inline">登录</a>
+                <a href="/user/register" class="a-inline">注册</a>
+              </div>
               <div v-if="userInfo.name" class="user-info">
                 <a class="user-info-link" @click="showDropdown">
                   <img class="avatar" height="20" width="20" :src="getAvatar" />
@@ -56,21 +56,21 @@
         </nav>
       </div>
     </header>
-
-    <nuxt></nuxt>
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 import picture from '@/assets/picture.jpg'
 // import { removeStore } from '@/utils'
-// import mtButton from '@/components/common/mtButton'
+import MtButton from '@/components/MtComponent/MtButton'
+import { getMenus } from '@/apis/article'
+
 let dropdownEvent = null
 export default {
-  // components: {
-  //   mtButton
-  // },
+  components: {
+    MtButton
+  },
   props: {
     navList: {
       type: Array,
@@ -82,11 +82,11 @@ export default {
       searchData: {
         title: ''
       },
-      dropdown: false
+      dropdown: false,
+      userInfo: {}
     }
   },
   computed: {
-    ...mapState('user', ['selectType', 'userInfo']),
     getAvatar() {
       let avatar = picture
       if (this.userInfo.avatar) {
@@ -94,6 +94,10 @@ export default {
       }
       return avatar
     }
+  },
+  async asyncData({ params }) {
+    const { data } = await getMenus()
+    return { menuData: data }
   },
   mounted() {
     this.setTitle()

@@ -1,22 +1,19 @@
 import { USER } from './mutation-types'
-import { getStore, setStore } from '@/utils'
-import { getMenus } from '@/apis/article'
+import { getStore } from '@/utils'
 
 const navName = 'navlist'
 
 export default {
-  [USER.GET_NAV_DATA](state) {
+  [USER.GET_NAV_DATA](state, nav) {
     const navlist = getStore(navName, true)
     if (state.navData.length === 0) {
       if (navlist != null) {
         state.navData = navlist
       }
-      getMenus().then((res) => {
-        if (res.data.status === 2000) {
-          setStore(navName, res.data.data)
-          state.navData = res.data.data
-        }
-      })
+
+      if (nav !== null) {
+        state.navData = nav
+      }
     }
   },
   [USER.SELECT_TYPE](state, type) {

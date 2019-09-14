@@ -33,6 +33,7 @@ export const searchArticle = (title) => {
 
 // 获取menu
 export const getMenus = () => {
+  console.log('test')
   return request({
     url: '/home/navlist',
     method: 'get'

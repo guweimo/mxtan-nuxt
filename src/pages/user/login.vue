@@ -33,6 +33,7 @@ import { login } from '@/apis/user'
 
 // 登录
 export default {
+  layout: 'default',
   components: {
     MtButton
   },

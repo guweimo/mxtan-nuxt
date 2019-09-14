@@ -5,6 +5,7 @@
 <script>
 let resizeFn = null
 export default {
+  layout: 'main',
   data() {
     return {
       styleObj: {
