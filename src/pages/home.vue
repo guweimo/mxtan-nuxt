@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import articleList from '@/components/ArticleList'
+import ArticleList from '@/components/ArticleList'
 import { getList } from '@/apis/article'
 
 export default {
   layout: 'main',
   components: {
-    articleList
+    ArticleList
   },
   data() {},
   async asyncData() {

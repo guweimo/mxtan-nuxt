@@ -12,10 +12,10 @@
         >
           <div class="article">
             <h1>
-              <router-link
+              <nuxt-link
                 :to="{ name: 'article', params: { id: item.id } }"
                 v-text="item.title"
-              ></router-link>
+              ></nuxt-link>
             </h1>
             <div class="article-header">
               <div class>
@@ -70,7 +70,7 @@ export default {
     }
     window.addEventListener('resize', resizeFn)
   },
-  destroyed() {
+  beforeDestroyed() {
     window.removeEventListener('resize', resizeFn)
   },
   methods: {

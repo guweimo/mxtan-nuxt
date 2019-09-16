@@ -9,12 +9,12 @@
 
 <script>
 import { mapState } from 'vuex'
-import articleList from '@/components/articleList'
+import ArticleList from '@/components/ArticleList'
 import { searchArticle } from '@/apis/article'
 
 export default {
   components: {
-    articleList
+    ArticleList
   },
   data() {
     return {

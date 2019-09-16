@@ -27,13 +27,15 @@
           <label class="form-top-item">
             <span class="form-star">*</span>内容
           </label>
-          <mavon-editor
-            v-model="formData.marktext"
-            class="form-bottom-item"
-            :subfield="bars.subfield"
-            :toolbars="bars"
-            @change="obtainHTML"
-          ></mavon-editor>
+          <no-ssr>
+            <mavon-editor
+              v-model="formData.marktext"
+              class="form-bottom-item"
+              :subfield="bars.subfield"
+              :toolbars="bars"
+              @change="obtainHTML"
+            ></mavon-editor>
+          </no-ssr>
         </div>
         <div class="form-bottom">
           <mt-button class="mt-cancel" @click="cancel">取消</mt-button>
@@ -46,14 +48,13 @@
 
 <script>
 import { mavonEditor } from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
 import { mapState } from 'vuex'
 import MtButton from '@/components/MtComponent/MtButton'
 import { verifyFormValue } from '@/utils'
 import { operateArticle } from '@/apis/article'
 
 export default {
-  name: 'Save',
+  layout: 'main',
   components: {
     MtButton,
     mavonEditor
@@ -107,7 +108,7 @@ export default {
   computed: {
     ...mapState('user', ['navData'])
   },
-  beforeMount() {
+  mounted() {
     this.sizeToStatus()
     window.onresize = () => {
       this.sizeToStatus()
