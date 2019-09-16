@@ -1,5 +1,5 @@
 <template>
-  <button class="mt-btn" :type="type" $click="handleClick">
+  <button class="mt-btn" :type="type" @click="handleClick">
     <slot />
   </button>
 </template>
