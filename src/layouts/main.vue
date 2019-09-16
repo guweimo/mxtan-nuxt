@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex'
 import MxHeader from '@/components/MxHeader'
 import MxFooter from '@/components/MxFooter'
 
@@ -20,17 +19,17 @@ export default {
     return {}
   },
   computed: {
-    ...mapState('user', ['navData'])
-  },
-  created() {
-    this.getUserInfo()
+    navData() {
+      return this.$store.state.user.navData
+    }
   },
   mounted() {
-    this.getNavData()
+    const body = document.querySelector('body')
+    body.classList.add('body-pt45')
   },
-  methods: {
-    ...mapMutations('user', ['getNavData']),
-    ...mapActions('user', ['getUserInfo'])
+  beforeDestroy() {
+    const body = document.querySelector('body')
+    body.classList.remove('body-pt45')
   }
 }
 </script>

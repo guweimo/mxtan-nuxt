@@ -2,9 +2,9 @@ import axios from 'axios'
 
 const options = {}
 
-if (process.server) {
-  options.baseURL = `htpps://api.guweimo.comg/`
-}
+// if (process.server) {
+options.baseURL = `https://api.guweimo.com/`
+// }
 
 const service = axios.create(options)
 

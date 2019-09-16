@@ -31,7 +31,8 @@ export default {
   css: [
     'ant-design-vue/dist/antd.css',
     '@/styles/base.scss',
-    '@/styles/transtion.scss'
+    '@/styles/transtion.scss',
+    '@/styles/markdown.css'
   ],
   /*
    ** Plugins to load before mounting the App

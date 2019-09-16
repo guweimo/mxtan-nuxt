@@ -7,7 +7,7 @@
             <li id="logo">
               <nuxt-link to="/home">Mxtan</nuxt-link>
             </li>
-            <li v-for="item in menuData" :key="item.title">
+            <li v-for="item in navList" :key="item.title">
               <nuxt-link
                 :to="item.url"
                 :class="{ select: selectType == item.title.toLowerCase() }"
@@ -62,9 +62,7 @@
 <script>
 import { mapMutations } from 'vuex'
 import picture from '@/assets/picture.jpg'
-// import { removeStore } from '@/utils'
 import MtButton from '@/components/MtComponent/MtButton'
-import { getMenus } from '@/apis/article'
 
 let dropdownEvent = null
 export default {
@@ -79,6 +77,7 @@ export default {
   },
   data() {
     return {
+      selectType: '',
       searchData: {
         title: ''
       },
@@ -95,16 +94,15 @@ export default {
       return avatar
     }
   },
-  async asyncData({ params }) {
-    const { data } = await getMenus()
-    return { menuData: data }
-  },
   mounted() {
     this.setTitle()
     dropdownEvent = (event) => {
       const target = event.target
       const userInfoLink = document.querySelector('.user-info-link')
-      const userInfoLinkChild = userInfoLink.childNodes
+      let userInfoLinkChild = []
+      if (userInfoLink) {
+        userInfoLinkChild = userInfoLink.childNodes
+      }
       let hasNode = false
       if (target === userInfoLink) {
         hasNode = true
