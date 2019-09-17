@@ -8,40 +8,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import ArticleList from '@/components/ArticleList'
 import { searchArticle } from '@/apis/article'
 
 export default {
+  layout: 'main',
+  watchQuery: ['title'],
   components: {
     ArticleList
   },
   data() {
     return {
-      list: {}
+      // list: {}
     }
   },
-  computed: {
-    ...mapState('user', ['searchTitle'])
-  },
-  watch: {
-    searchTitle(newVal) {
-      this.search(newVal)
-    }
-  },
-  mounted() {
-    this.search()
-  },
-  methods: {
-    search(title) {
-      const data = title || this.$route.params.title
-      searchArticle(data).then((res) => {
-        const resData = res.data
-        if (resData.status === 2000) {
-          this.list = resData.data
-        }
-      })
-    }
+  async asyncData({ query }) {
+    const { data } = await searchArticle(query.title)
+    return { list: data.data }
   }
 }
 </script>

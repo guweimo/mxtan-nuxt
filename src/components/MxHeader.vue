@@ -127,7 +127,11 @@ export default {
     searchTitle() {
       if (this.searchData.title.trim()) {
         this.updateSearchTitle(this.searchData.title)
-        this.$router.push(`/search/${this.searchData.title}`)
+        // this.$router.push(`/search/${this.searchData.title}`)
+        this.$router.push({
+          path: 'search',
+          query: { title: this.searchData.title }
+        })
       }
     },
     setTitle() {
@@ -139,7 +143,6 @@ export default {
       this.dropdown = !this.dropdown
     },
     exit() {
-      // removeStore('userinfo')
       this.removeUserinfo()
       this.$router.push('/login')
     },

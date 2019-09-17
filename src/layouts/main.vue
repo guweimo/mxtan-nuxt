@@ -1,7 +1,7 @@
 <template>
   <div class="main-page">
     <mx-header :nav-list="navData"></mx-header>
-    <nuxt />
+    <nuxt class="main-layout" />
     <mx-footer></mx-footer>
   </div>
 </template>
@@ -22,14 +22,12 @@ export default {
     navData() {
       return this.$store.state.user.navData
     }
-  },
-  mounted() {
-    const body = document.querySelector('body')
-    body.classList.add('body-pt45')
-  },
-  beforeDestroy() {
-    const body = document.querySelector('body')
-    body.classList.remove('body-pt45')
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.main-layout {
+  margin-top: 65px;
+}
+</style>
