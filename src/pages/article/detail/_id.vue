@@ -18,9 +18,6 @@ export default {
   components: {
     articleDetail
   },
-  data() {
-    return {}
-  },
   async asyncData({ params, error }) {
     const { data } = await getArticleDetail(params.id)
     if (data.status !== 2000) {

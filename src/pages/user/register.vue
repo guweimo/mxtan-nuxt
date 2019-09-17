@@ -93,7 +93,7 @@ export default {
         registerUser(this.formData).then((res) => {
           const resData = res.data
           if (resData.status === 2000) {
-            this.$router.replace('/login')
+            this.$router.replace('/user/login')
           } else if (resData.type) {
             this[`${resData.type}Error`] = resData.message
           }

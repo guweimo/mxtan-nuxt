@@ -17,11 +17,6 @@ export default {
   components: {
     ArticleList
   },
-  data() {
-    return {
-      // list: {}
-    }
-  },
   async asyncData({ query }) {
     const { data } = await searchArticle(query.title)
     return { list: data.data }

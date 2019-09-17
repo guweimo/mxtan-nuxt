@@ -6,7 +6,7 @@
         <label for="login_name">用户名</label>
         <input
           id="login_name"
-          v-model="formData.name"
+          v-model.trim="formData.name"
           type="text"
           class="form-control input-block"
           @keyup="cancelError"

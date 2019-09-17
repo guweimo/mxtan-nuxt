@@ -146,7 +146,7 @@ export default {
       operateArticle(this.formData).then((res) => {
         const resData = res.data
         if (resData.status === 2000) {
-          this.$router.replace(`/article/${resData.data}`)
+          this.$router.replace(`/article/detail/${resData.data}`)
         } else {
           this.$message({
             type: 'error',
