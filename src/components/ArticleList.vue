@@ -13,7 +13,7 @@
           <div class="article">
             <h1>
               <nuxt-link
-                :to="{ name: 'article', params: { id: item.id } }"
+                :to="'/article/detail/' + item.id"
                 v-text="item.title"
               ></nuxt-link>
             </h1>

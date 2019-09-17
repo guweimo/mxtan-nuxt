@@ -11,28 +11,22 @@ import articleDetail from '@/components/articleDetail'
 import { getArticleDetail } from '@/apis/article'
 
 export default {
+  layout: 'main',
+  validate({ params }) {
+    return !isNaN(+params.id)
+  },
   components: {
     articleDetail
   },
   data() {
-    return {
-      detailData: {}
-    }
+    return {}
   },
-  mounted() {
-    this.obtionDetailData()
-  },
-  methods: {
-    // 获取博文详情
-    obtionDetailData() {
-      getArticleDetail(this.$route.params.id).then((res) => {
-        if (res.data.status === 2000) {
-          this.detailData = res.data.data
-        } else {
-          this.$router.replace('/error/404')
-        }
-      })
+  async asyncData({ params, error }) {
+    const { data } = await getArticleDetail(params.id)
+    if (data.status !== 2000) {
+      return error({ message: 'User not found', statusCode: 404 })
     }
+    return { detailData: data.data }
   }
 }
 </script>
