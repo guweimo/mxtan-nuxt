@@ -1,62 +1,59 @@
 <template>
-  <div>
-    <header id="header">
-      <div class="container">
-        <nav>
-          <ul class="menu">
-            <li id="logo">
-              <nuxt-link to="/home">Mxtan</nuxt-link>
-            </li>
-            <li v-for="item in navList" :key="item.title">
-              <nuxt-link
-                :to="item.url"
-                :class="{ select: selectType == item.title.toLowerCase() }"
-                v-text="item.title"
-              ></nuxt-link>
-            </li>
-            <li class="search">
-              <input
-                v-model="searchData.title"
-                type="text"
-                class="form-control"
-                placeholder="请搜索博文"
-                @keyup.13="searchTitle"
-              />
-            </li>
-            <li>
-              <mt-button
-                v-if="userInfo.name"
-                class="mt-primary"
-                @click="gotoSave"
-                >发布</mt-button
-              >
-            </li>
-            <li>
-              <div v-if="!userInfo.name" class="sign">
-                <a href="/user/login" class="a-inline">登录</a>
-                <a href="/user/register" class="a-inline">注册</a>
+  <header id="header">
+    <div class="container">
+      <nav>
+        <ul class="menu">
+          <li id="logo">
+            <nuxt-link to="/home">Mxtan</nuxt-link>
+          </li>
+          <li v-for="item in navList" :key="item.title">
+            <nuxt-link
+              :to="'/type/' + item.title.toLowerCase()"
+              :class="{
+                select: $route.params.type == item.title.toLowerCase()
+              }"
+              v-text="item.title"
+            ></nuxt-link>
+          </li>
+          <li class="search">
+            <input
+              v-model="searchData.title"
+              type="text"
+              class="form-control"
+              placeholder="请搜索博文"
+              @keyup.13="searchTitle"
+            />
+          </li>
+          <li>
+            <mt-button v-if="userInfo.name" class="mt-primary" @click="gotoSave"
+              >发布</mt-button
+            >
+          </li>
+          <li>
+            <div v-if="!userInfo.name" class="sign">
+              <a href="/user/login" class="a-inline">登录</a>
+              <a href="/user/register" class="a-inline">注册</a>
+            </div>
+            <div v-if="userInfo.name" class="user-info">
+              <a class="user-info-link" @click="showDropdown">
+                <img class="avatar" height="20" width="20" :src="getAvatar" />
+                <span class="user-info-name">{{ userInfo.name }}</span>
+                <span class="dropdown-caret"></span>
+              </a>
+              <div v-show="dropdown" class="dropdown-menu">
+                <span></span>
+                <ul>
+                  <li @click="goRouter('people')">我的主页</li>
+                  <li>设置</li>
+                  <li @click="exit">退出</li>
+                </ul>
               </div>
-              <div v-if="userInfo.name" class="user-info">
-                <a class="user-info-link" @click="showDropdown">
-                  <img class="avatar" height="20" width="20" :src="getAvatar" />
-                  <span class="user-info-name">{{ userInfo.name }}</span>
-                  <span class="dropdown-caret"></span>
-                </a>
-                <div v-show="dropdown" class="dropdown-menu">
-                  <span></span>
-                  <ul>
-                    <li @click="goRouter('people')">我的主页</li>
-                    <li>设置</li>
-                    <li @click="exit">退出</li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-  </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 </template>
 
 <script>

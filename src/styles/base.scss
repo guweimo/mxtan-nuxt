@@ -64,6 +64,10 @@ a:hover {
   color: #0d8abf;
 }
 
+a:active, a:focus {
+  text-decoration: none;
+}
+
 sup {
   vertical-align: text-top;
 }

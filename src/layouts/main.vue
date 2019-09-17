@@ -15,6 +15,13 @@ export default {
     MxFooter,
     MxHeader
   },
+  head() {
+    return {
+      bodyAttrs: {
+        class: 'body-pt45'
+      }
+    }
+  },
   data() {
     return {}
   },
@@ -26,8 +33,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.main-layout {
-  margin-top: 65px;
+<style lang="scss">
+.mxtan-body {
+  padding-top: 45px;
 }
 </style>
