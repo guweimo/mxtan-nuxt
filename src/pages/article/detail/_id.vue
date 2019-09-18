@@ -21,7 +21,7 @@ export default {
   async asyncData({ params, error }) {
     const { data } = await getArticleDetail(params.id)
     if (data.status !== 2000) {
-      return error({ message: 'User not found', statusCode: 404 })
+      return error({ message: '博文未找到', statusCode: 404 })
     }
     return { detailData: data.data }
   }

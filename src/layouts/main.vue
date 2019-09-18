@@ -37,4 +37,8 @@ export default {
 .mxtan-body {
   padding-top: 45px;
 }
+
+.main-layout {
+  margin-bottom: 20px;
+}
 </style>

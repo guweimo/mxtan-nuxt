@@ -98,7 +98,7 @@ export default {
   h1 {
     margin: 0 0 15px;
     a {
-      display: block;
+      // display: block;
       font-size: 24px;
       transition: color 0.3s ease;
     }
