@@ -36,14 +36,6 @@ export default {
         }
       ]
     }
-  },
-  mounted() {
-    const body = document.querySelector('body')
-    body.classList.add('body-no-padding')
-  },
-  destroyed() {
-    const body = document.querySelector('body')
-    body.classList.remove('body-no-padding')
   }
 }
 </script>

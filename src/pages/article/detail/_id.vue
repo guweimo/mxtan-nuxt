@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import articleDetail from '@/components/articleDetail'
+import ArticleDetail from '@/components/ArticleComponent/ArticleDetail'
 import { getArticleDetail } from '@/apis/article'
 
 export default {
@@ -16,7 +16,7 @@ export default {
     return !isNaN(+params.id)
   },
   components: {
-    articleDetail
+    ArticleDetail
   },
   async asyncData({ params, error }) {
     const { data } = await getArticleDetail(params.id)
