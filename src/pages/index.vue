@@ -6,7 +6,6 @@
       <ul class="clearfix blog-ul">
         <li v-for="item in urlList" :key="item.title">
           <a :href="item.url" :target="item.target" v-text="item.title"></a>
-          <!-- <router-link :to="item.url" v-text="item.title"></router-link> -->
         </li>
       </ul>
     </div>

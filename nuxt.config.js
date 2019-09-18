@@ -39,6 +39,7 @@ export default {
    */
   plugins: [
     '@/plugins/antd-ui',
+    '@/plugins/message',
     { src: '@/plugins/vue-mavon-editor', srr: false }
   ],
   /*

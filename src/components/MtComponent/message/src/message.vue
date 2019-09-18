@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .mei-message {
   position: fixed;
   left: 50%;
