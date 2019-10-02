@@ -126,7 +126,7 @@ export default {
         this.updateSearchTitle(this.searchData.title)
         // this.$router.push(`/search/${this.searchData.title}`)
         this.$router.push({
-          path: 'search',
+          path: '/search',
           query: { title: this.searchData.title }
         })
       }
